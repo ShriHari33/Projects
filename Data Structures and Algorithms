@@ -1,4 +1,6 @@
-```c
+#### Building an algorithm for Package Delivery Companies which have a Priority Customer System, which let's know the delivery people as to which packages should delivered first obeying the Priority Scheduling of the Customers.
+
+
 #include "stdio.h"
 #include "stdlib.h"
 #include "limits.h"
@@ -478,4 +480,4 @@ void push(stack* s, int p)
     s->arr[s->top] = p;
 }
 
-```
+
