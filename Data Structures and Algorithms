@@ -1,4 +1,4 @@
-#### Building an algorithm for Package Delivery Companies which have a Priority Customer System, which let's know the delivery people as to which packages should delivered first obeying the Priority Scheduling of the Customers.
+Building an algorithm for Package Delivery Companies which have a Priority Customer System, which let's know the delivery people as to which packages should delivered first obeying the Priority Scheduling of the Customers.
 
 
 #include "stdio.h"
