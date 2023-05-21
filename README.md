@@ -10,3 +10,4 @@ Projects that I have been a part of, for the various courses of the university.
 
 ## 3) DataBase Management Systems
 #### Built an identical model of **Starbucks** called **SipsSpace** which helps keep track of orders and customers for Company.
+
