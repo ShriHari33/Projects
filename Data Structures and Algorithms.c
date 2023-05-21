@@ -11,14 +11,24 @@
     
     Logic:
     Now, we discarded Floyd Warshall because printing the path in it was not very obvious to us. We saw that we can use a version of Dijkstra's algorithm, as it demanded a shortest
-    path at every instant, GIVEN the destination using the Priority Scheduling. So, we constructed the graph using Adjacency List representation, wherein 
+    path at every instant, GIVEN the destination using the Priority Scheduling. So, we constructed the graph using Adjacency List representation, wherein the 0th node represents the
+    location from where we start. 
+    
+    Now, we fill in the customers with their customerID and Priority Card. We then arrange the deliveries to be given in the Order "Platinum, Gold and Silver". All Platinum's are to
+    be delivered first, then gold and then the silver.
+    
+    We apply Dijkstra's algorithm to reach the first Platinum customer from the location of start delivery. We use a Heap Data Structure to maintain efficiency. This finds the short-
+    est way to the Platinum customer (1st) from the store. After that, we print the path with the cost and then again apply Dijkstra's algorithm from this Platinum customer (1st) to
+    the next Platinum customer (2nd). This goes on until we have finally finished all the deliveries.
 */
 
 #include "stdio.h"
 #include "stdlib.h"
 #include "limits.h"
 #include "string.h"
-#
+#include "time.h"
+
+
 #define MAX 100
 
 typedef struct
@@ -35,7 +45,7 @@ typedef struct node
     struct node* next;
 }node;
 
-typedef struct heapVertex
+typedef struct
 {
     int vertex;
     int distance;
@@ -86,8 +96,8 @@ void initGraph(node** graph);
 void addCustomerToDelivery(node** graph, int id, double purchasePrice);
 void connectCustomers(node** graph);
 void displayGraph(node** graph);
-void fillCustomerCardTypes(node** graph);
-void printCustomers(node** graph);
+void fillCustomerCardTypes();
+void printCustomers();
 void optimalPathOrderFiller(node** graph);
 void optimalPathFinder(node** graph);
 
@@ -113,8 +123,8 @@ int main()
     int id;
     double purchasePrice;
 
-    fillCustomerCardTypes(graph);
-    printCustomers(graph);
+    fillCustomerCardTypes();
+    printCustomers();
 
     while(customerCount <= verticesCount - 1)
     {
@@ -197,7 +207,7 @@ void optimalPathFinder(node** graph)
 
 
 // displaying the graph after initialization
-void printCustomers(node** graph)
+void printCustomers()
 {
     int i;
     for(i = 1; i<=verticesCount; ++i)
@@ -207,7 +217,7 @@ void printCustomers(node** graph)
 
 
 // randomly assign every customer with a membership type
-void fillCustomerCardTypes(node** graph)
+void fillCustomerCardTypes()
 {
     int i, randomFiller;
     char differentMemberships[3][11] = {"Silver", "Gold", "Platinum"};
@@ -241,7 +251,7 @@ void addCustomerToDelivery(node** graph, int id, double purchasePrice)
     p->vertex = id;
     p->distanceInKms = rand()%20;
 
-    if(graph[0] == NULL)
+    if(graph[0] == NULL)  // 0th Vertex represents our store's location
         graph[0] = p;
     else
     {
@@ -260,8 +270,9 @@ void connectCustomers(node** graph)
 {
     int i = 1;
     int randomKm;
-    int matrix[MAX][MAX];
+    int matrix[MAX][MAX];  // this DS is to ensure the dist(u, v) = dist(v, u)
     int m, n, prevDistance;
+
     for(m = 0; m<MAX; m++)
     {
         for(n = 0; n<MAX; ++n)
@@ -491,5 +502,3 @@ void push(stack* s, int p)
     s->top++;
     s->arr[s->top] = p;
 }
-
-
