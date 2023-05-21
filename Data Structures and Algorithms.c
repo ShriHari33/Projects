@@ -1,12 +1,24 @@
-Building an algorithm for Package Delivery Companies which have a Priority Customer System, which let's know the delivery people as to which packages should delivered first obeying the Priority Scheduling of the Customers.
+/* Problem Statement
+   Building an algorithm for Package Delivery Companies which have a Priority Customer System, which let's know the delivery people as to which packages should delivered first 
+   starting from their main office obeying the Priority Scheduling of the Customers. Path to be taken to deliver each package MUST also be given as the output.
+*/
 
+
+/*  Approach to solving this problem
+    Considerations:
+    1) The graph formed is a Complete Graph because we have considered a logical assumption that every house is connected to other house via some path.
+    2) The distance between two houses (u, v) is the same as distance between (v, u). Again, a reasonable assumption to be made.
+    
+    Logic:
+    Now, we discarded Floyd Warshall because printing the path in it was not very obvious to us. We saw that we can use a version of Dijkstra's algorithm, as it demanded a shortest
+    path at every instant, GIVEN the destination using the Priority Scheduling. So, we constructed the graph using Adjacency List representation, wherein 
+*/
 
 #include "stdio.h"
 #include "stdlib.h"
 #include "limits.h"
 #include "string.h"
-#include "time.h"
-
+#
 #define MAX 100
 
 typedef struct
