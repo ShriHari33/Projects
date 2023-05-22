@@ -11,3 +11,6 @@ Projects that I have been a part of, for the various courses of the university.
 ## 3) DataBase Management Systems
 #### Built an identical model of **Starbucks** called **SipsSpace** which helps keep track of orders and customers for Company.
 
+## 4) Engineering Exploration
+#### Built a very inexpensive Frog Robot that has the functionalities of hopping, and to stop hopping after detecting an object in front of it, and to only restart hopping after the object is removed.
+[Please click here for a glimpse into the Robot!](https://youtu.be/bY0144465kg)
